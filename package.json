@@ -1,9 +1,11 @@
 {
-  "name": "eima",
+  "name": "eima-workspace",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --project app-host",
+    "start:course-app": "ng serve --project course-app --port 4201",
+    "start:student-app": "ng serve --project student-app --port 4202",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -23,6 +25,7 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "^19.0.0",
     "@angular/cli": "^19.0.0",
     "@angular/compiler-cli": "^19.0.0",
     "@types/jasmine": "~5.1.0",
