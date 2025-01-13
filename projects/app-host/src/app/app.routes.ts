@@ -4,8 +4,9 @@ export const routes: Routes = [
     {
         path: '',
         
-        // component: AppComponent,
+        
         children: [
+            // This will set the default '/' route goes to course/dashboard
             {
                 path: '',
                 pathMatch: 'full',
@@ -17,7 +18,8 @@ export const routes: Routes = [
             },
             {    
                 path: 'student'
-                , loadComponent: () => import('../../../student-app/src/app/app.component').then(c => c.AppComponent)  
+                , loadChildren: () => import('../../../student-app/src/app/app.routes').then(c => c.routes)
+                //, loadComponent: () => import('../../../student-app/src/app/app.component').then(c => c.AppComponent)  
             }
         ]
     }
