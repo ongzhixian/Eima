@@ -27,7 +27,9 @@
               }
             ],
             "styles": [
-              "projects/app-host/src/styles.css"
+              "projects/app-host/src/styles.css",
+              "projects/app-host/public/css/normalize.css",
+              "projects/app-host/public/css/skeleton.css"
             ],
             "scripts": []
           },
