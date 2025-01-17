@@ -1,14 +1,21 @@
 import { Routes } from '@angular/router';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { authenticatedUserGuard } from './guards/authenticated-user.guard';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 export const routes: Routes = [
     {
         path: '',
-        
-        
+        canActivate: [authenticatedUserGuard],
         children: [
             // This will set the default '/' route goes to course/dashboard
             {
                 path: '',
+                pathMatch: 'full',
+                component: HomePageComponent
+            },
+            {
+                path: 'course-dashboard',
                 pathMatch: 'full',
                 redirectTo: 'course/dashboard'
             },
@@ -21,6 +28,16 @@ export const routes: Routes = [
                 , loadChildren: () => import('../../../student-app/src/app/app.routes').then(c => c.routes)
                 //, loadComponent: () => import('../../../student-app/src/app/app.component').then(c => c.AppComponent)  
             }
+        ]
+    },
+    {
+        path: '',
+        children: [
+            {
+                path: 'login',
+                pathMatch: 'full',
+                component: LoginPageComponent
+            },
         ]
     }
     

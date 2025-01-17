@@ -9,9 +9,16 @@ import { AppUser } from '../models/app-user';
 })
 export class AuthenticationService {
 
+    isAuthenticated: boolean = false;
+    
     isUserLoggedIn: boolean = false;
 
+    apiUrl: string = 'https://localhost:7071';
+
     login(userName: string, password: string): Observable<AppUser> {
+
+        //this.http.post<User>(this.apiUrl + '/api/User/register', newUser)
+
         console.log(userName);
         console.log(password);
         this.isUserLoggedIn = userName == 'admin' && password == 'admin';
