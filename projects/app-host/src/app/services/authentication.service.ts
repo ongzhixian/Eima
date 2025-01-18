@@ -1,28 +1,34 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { tap, delay } from 'rxjs/operators';
 import { AppUser } from '../models/app-user';
+import { AppConfigurationService } from './app-configuration.service';
+import { AppConfiguration } from '../models/app-configuration';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AuthenticationService {
-
-    isAuthenticated: boolean = false;
-    
-    isUserLoggedIn: boolean = false;
-
-    apiUrl: string = 'https://localhost:7071';
 
     login(userName: string, password: string): Observable<AppUser> {
 
         //this.http.post<User>(this.apiUrl + '/api/User/register', newUser)
 
-        console.log(userName);
+        console.log(userName, password);
+
         console.log(password);
-        this.isUserLoggedIn = userName == 'admin' && password == 'admin';
-        localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? "true" : "false");
+
+        this.isAuthenticated = userName == 'admin@eima' && password == 'admin';
+
+        const newAppUser: AppUser = {
+            isAuthenticated : true,
+            token : 'someTple',
+            username : 'someuser'
+        };
+
+        this.appUserSubject.next(newAppUser);
+        localStorage.setItem('isAuthenticated', this.isAuthenticated ? "true" : "false");
 
         // return this.http.post<Auth>(`${this.apiURLUsers}/login`, { email, password })
         //     .pipe(
@@ -33,7 +39,7 @@ export class AuthenticationService {
         //         })
         //     );
 
-        return of(<AppUser>{ username: "asd" }).pipe(
+        return of(<AppUser>{ username: userName }).pipe(
             delay(1000),
             tap(val => {
                 console.log("Is User Authentication is successful: " + val);
@@ -42,10 +48,26 @@ export class AuthenticationService {
     }
 
     logout(): void {
-        this.isUserLoggedIn = false;
-        localStorage.removeItem('isUserLoggedIn');
+        this.isAuthenticated = false;
+        localStorage.removeItem('isAuthenticated');
     }
 
-    constructor() { }
+    isAuthenticated: boolean = false;
+    
+    apiUrl: string = 'https://localhost:7071';
+    
+    settings$: Observable<AppConfiguration>;
+
+    private appUserSubject = new BehaviorSubject<AppUser>({
+        isAuthenticated: false,
+        username: '',
+        token: ''
+    });
+    
+    appUser$ = this.appUserSubject.asObservable();
+    
+    constructor(private appConfigurationService: AppConfigurationService) {
+        this.settings$ = this.appConfigurationService.settings$;
+    }
 
 }
