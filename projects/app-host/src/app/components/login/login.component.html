@@ -1,0 +1,21 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h2>Login</h2>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" formControlName="email" required />
+        <ng-container *ngIf="loginForm.get('email')?.hasError('required')">
+            Email is required
+        </ng-container>
+        <ng-container *ngIf="loginForm.get('email')?.hasError('email')">
+            Invalid email format
+        </ng-container>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" formControlName="password" required />
+        <ng-container *ngIf="loginForm.get('password')?.hasError('required')">
+            Password is required
+        </ng-container>
+    </div>
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+</form>
