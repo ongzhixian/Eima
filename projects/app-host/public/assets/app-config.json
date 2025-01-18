@@ -1,0 +1,8 @@
+{
+    "theme": "blue",
+    "language": "small",
+    "apiUrls": {
+        "authenticate": "http://localhost:7071/authenticate",
+        "userPreference": "http://localhost:7071/user-preference"
+    }
+}
