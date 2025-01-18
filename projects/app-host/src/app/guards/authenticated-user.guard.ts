@@ -5,6 +5,10 @@ import { AuthenticationService } from '../services/authentication.service';
 
 export const authenticatedUserGuard: CanActivateFn = (route, state) => {
   
+  const authenticateService = inject(AuthenticationService);
+
+  console.log("authenticatedUserGuard {isAuthenticated}", authenticateService.isAuthenticated);
+
   if (inject(AuthenticationService).isAuthenticated) return true;
   
   inject(Router).navigate(['/login']);
