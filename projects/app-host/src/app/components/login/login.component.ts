@@ -19,7 +19,6 @@ export class LoginComponent {
     private router: Router,
     private authService: AuthenticationService
   ) {
-
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]], 
       password: ['', Validators.required],
@@ -34,18 +33,18 @@ export class LoginComponent {
 
       const { email, password } = this.loginForm.value;
       
-      this.authService.login(email, password)
-        .subscribe({
-          next: () => {
-            console.log('sucees');
-            this.router.navigate(['/']); 
-          },
-          error: (err) => {
-            // Handle specific errors from your backend 
-            // (e.g., incorrect credentials, server errors)
-            console.error('Login failed:', err); 
-          },
-        });
+      this.authService.login(email, password).subscribe({
+        next: (appUser) => {
+          console.log('Login success: {appUser}', appUser);
+          this.router.navigate(['']); 
+        },
+        error: (err) => {
+          // Handle specific errors from your backend 
+          // (e.g., incorrect credentials, server errors)
+          console.error('Login failed:', err); 
+        }
+      });
+
     }
   }
 }
