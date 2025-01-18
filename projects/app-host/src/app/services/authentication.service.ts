@@ -30,8 +30,14 @@ export class AuthenticationService {
 
     constructor(private appConfigurationService: AppConfigurationService, private http: HttpClient) {
 
-        this.settings$ = this.appConfigurationService.settings$;
+        const appUserJson = localStorage.getItem('appUser');
+        if (appUserJson) {
+            const parsedAppUser: AppUser = JSON.parse(appUserJson);
+            this.isAuthenticated = parsedAppUser.isAuthenticated;
+            this.appUserSubject.next(parsedAppUser);
+        }
 
+        this.settings$ = this.appConfigurationService.settings$;
         this.settings$.subscribe(appConfiguration => {
             this.appConfiguration = appConfiguration
         });
@@ -53,6 +59,7 @@ export class AuthenticationService {
                 console.log("Received {appUser}", appUser);
                 this.isAuthenticated = true;
                 this.appUserSubject.next(appUser);
+                localStorage.setItem('appUser', JSON.stringify(appUser));
                 localStorage.setItem('isAuthenticated', this.isAuthenticated ? "true" : "false");
             })
         );
