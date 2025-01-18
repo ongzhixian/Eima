@@ -1,10 +1,14 @@
 <nav class="navbar">
     <div class="brand"><a href="#">Eima</a></div>
     <div></div>
-    <ul>
+    <ul *ngIf="(isAuthenticated$ | async) as isAuthenticated; else loginBlock">
+        
         <li><a routerLink="course">Course</a></li>
         <li><a routerLink="student">Student</a></li>
         <li><a routerLink="course-dashboard">Dashboard</a></li>
         <li><a routerLink="student/dashboard">Item 3</a></li>
     </ul>
+    <ng-template #loginBlock>
+        <button>Login</button>
+    </ng-template>
 </nav>
