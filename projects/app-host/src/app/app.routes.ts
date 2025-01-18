@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { authenticatedUserGuard } from './guards/authenticated-user.guard';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { LogoutPageComponent } from './pages/logout-page/logout-page.component';
 
 export const routes: Routes = [
     {
@@ -13,6 +14,11 @@ export const routes: Routes = [
                 path: '',
                 pathMatch: 'full',
                 component: HomePageComponent
+            },
+            {
+                path: 'logout',
+                pathMatch: 'full',
+                component: LogoutPageComponent
             },
             {
                 path: 'course-dashboard',
