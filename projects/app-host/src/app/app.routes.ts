@@ -33,6 +33,11 @@ export const routes: Routes = [
                 path: 'student'
                 , loadChildren: () => import('../../../student-app/src/app/app.routes').then(c => c.routes)
                 //, loadComponent: () => import('../../../student-app/src/app/app.component').then(c => c.AppComponent)  
+            },
+            {    
+                path: 'aam'
+                , loadChildren: () => import('../../../aam-app/src/app/app.routes').then(c => c.routes)
+                //, loadComponent: () => import('../../../student-app/src/app/app.component').then(c => c.AppComponent)  
             }
         ]
     },
