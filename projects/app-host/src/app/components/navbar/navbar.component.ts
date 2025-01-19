@@ -17,8 +17,13 @@ export class NavbarComponent {
   constructor(private authenticationService: AuthenticationService) {
     
     this.isAuthenticated$ = this.authenticationService.appUser$.pipe(
-      map(obj => obj.isAuthenticated) 
+      //tap(appUser => console.log("NavbarComponent(in) > {IsAuthenticated}", appUser.isAuthenticated)),
+      map(appUser => appUser.isAuthenticated)
     );
+
+    //this.isAuthenticated$ = of(false);
+
+    // console.log("NavbarComponent(out) > {isAuthenticated$}", this.isAuthenticated$);
 
   }
 }
