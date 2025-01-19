@@ -31,10 +31,13 @@ export class AuthenticationService {
     constructor(private appConfigurationService: AppConfigurationService, private http: HttpClient) {
 
         const appUserJson = localStorage.getItem('appUser');
+        
+
         if (appUserJson) {
             const parsedAppUser: AppUser = JSON.parse(appUserJson);
             this.isAuthenticated = parsedAppUser.isAuthenticated;
             this.appUserSubject.next(parsedAppUser);
+            //console.debug("Authentication {appUserJson}, {parsedAppUser}", appUserJson, parsedAppUser);
         }
 
         this.settings$ = this.appConfigurationService.settings$;
