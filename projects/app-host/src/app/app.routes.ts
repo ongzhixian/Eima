@@ -25,19 +25,19 @@ export const routes: Routes = [
                 pathMatch: 'full',
                 redirectTo: 'course/dashboard'
             },
-            {    
+            {
                 path: 'course'
-                , loadChildren: () => import('../../../course-app/src/app/app.routes').then(c => c.routes)  
+                , loadChildren: () => import('../../../course-app/src/app/app.routes').then(c => c.routes)
             },
-            {    
+            {
                 path: 'student'
                 , loadChildren: () => import('../../../student-app/src/app/app.routes').then(c => c.routes)
-                //, loadComponent: () => import('../../../student-app/src/app/app.component').then(c => c.AppComponent)  
+                //, loadComponent: () => import('../../../student-app/src/app/app.component').then(c => c.AppComponent)
             },
-            {    
+            {
                 path: 'aam'
                 , loadChildren: () => import('../../../aam-app/src/app/app.routes').then(c => c.routes)
-                //, loadComponent: () => import('../../../student-app/src/app/app.component').then(c => c.AppComponent)  
+                , loadComponent: () => import('../../../aam-app/src/app/app.component').then(c => c.AppComponent)
             }
         ]
     },
@@ -51,5 +51,5 @@ export const routes: Routes = [
             },
         ]
     }
-    
+
 ];

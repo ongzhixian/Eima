@@ -1,0 +1,15 @@
+nav {
+  border-right: 4px none var(--link-colour);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;;
+  align-items: center;
+  gap: 2.36rem;
+  padding-top: 1.67em;
+}
+
+nav a {
+  display: inline-block;
+  font-size: 1.2em;
+  text-decoration: none;
+}
