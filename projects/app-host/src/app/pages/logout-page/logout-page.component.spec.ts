@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LogoutPageComponent } from './logout-page.component';
+import {provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 
 describe('LogoutPageComponent', () => {
   let component: LogoutPageComponent;
@@ -8,6 +9,9 @@ describe('LogoutPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [
+        provideHttpClient(withInterceptorsFromDi())
+      ],
       imports: [LogoutPageComponent]
     })
     .compileComponents();

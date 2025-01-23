@@ -8,7 +8,9 @@
     "start:student-app": "ng serve --project student-app --port 4202",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test --watch=false",
+    "test-watch": "ng test app-host",
+    "test-headless": "ng test app-host --browsers ChromeHeadless"
   },
   "private": true,
   "dependencies": {
