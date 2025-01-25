@@ -2,11 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../../services/user.service';
 import {AppUserEntry} from '../../../models/app-user-entry';
 import {NgForOf} from '@angular/common';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'aam-user-list-page',
   imports: [
-    NgForOf
+    NgForOf, RouterLink
   ],
   templateUrl: './user-list-page.component.html',
   styleUrl: './user-list-page.component.css'
