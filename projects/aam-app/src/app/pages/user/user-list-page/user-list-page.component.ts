@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../../services/user.service';
-import {Router} from '@angular/router';
-import {AppUserEntry, ListAppUserResponse} from '../../../models/app-user-entry';
+import {AppUserEntry} from '../../../models/app-user-entry';
 import {NgForOf} from '@angular/common';
 
 @Component({
@@ -16,7 +15,7 @@ export class UserListPageComponent implements OnInit {
 
   users!:AppUserEntry[];
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService) {
   }
 
   ngOnInit(): void {
