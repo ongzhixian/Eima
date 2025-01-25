@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {AppConfigurationService} from '../../../../app-host/src/app/services/app-configuration.service';
 import {AppConfiguration} from '../../../../app-host/src/app/models/app-configuration';
-import {AppUserEntry, ListAppUserResponse} from '../models/app-user-entry';
+import {ListAppUserResponse} from '../models/app-user-entry';
 
 @Injectable({
   providedIn: 'root'
