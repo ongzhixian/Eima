@@ -3,6 +3,8 @@
     "language": "small",
     "apiUrls": {
         "authenticate": "http://localhost:7071/api/v1/authenticate",
-        "userPreference": "http://localhost:7071/api/v1/user-preference"
+        "userPreference": "http://localhost:7071/api/v1/user-preference",
+
+      "appUser": "http://localhost:7071/api/v1/app-user"
     }
 }
