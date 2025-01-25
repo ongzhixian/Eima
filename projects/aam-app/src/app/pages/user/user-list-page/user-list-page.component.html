@@ -1,1 +1,18 @@
-<p>user-list-page works!</p>
+<p>user-list-page works !</p>
+
+<table>
+  <thead>
+  <tr>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Display Name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users">
+    <td>{{user.username}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.displayName}}</td>
+  </tr>
+  </tbody>
+</table>
