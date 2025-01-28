@@ -53,4 +53,12 @@ export class UserService {
     // );
   }
 
+  registerUser(username : string, password : string, email : string, displayName : string) {
+
+    const apiUrl = this.appConfiguration.apiUrls['appUser'];
+
+    return this.http.post(apiUrl, { username, password, email, displayName });
+
+  }
+
 }

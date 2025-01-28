@@ -9,3 +9,11 @@ export interface AppUserEntry {
 export interface ListAppUserResponse {
   listEntries: AppUserEntry[];
 }
+
+
+export interface RegisterAppUserRequest {
+  username: string;
+  password: string;
+  email: string;
+  displayName: string;
+}
