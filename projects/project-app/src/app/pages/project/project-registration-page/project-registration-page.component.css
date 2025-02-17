@@ -1,0 +1,50 @@
+/*form {*/
+/*  display: grid;*/
+/*  grid-template-areas:*/
+/*    "field-label field-input feedback-text"*/
+/*    "action action action"*/
+/*  ;*/
+
+/*  grid-template-columns: 8rem 1fr auto;*/
+/*  grid-gap: .36rem;*/
+/*}*/
+
+/*form label {*/
+/*  grid-area: field-label;*/
+/*}*/
+
+/*form input {*/
+/*  grid-area: field-input;*/
+/*}*/
+
+/*form .feedback-text {*/
+/*  grid-area: feedback-text;*/
+/*}*/
+
+/*section .action {*/
+/*  grid-area: action;*/
+/*}*/
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-top: .809rem;
+}
+
+.form-row {
+  display: grid; /* Use grid for alignment */
+  grid-template-columns: 9rem 27fr 18rem; /* Adjust label width (100px) as needed */
+  gap: .809rem; /* Spacing between grid items */
+  align-items: center; /* Vertically align items in the row */
+  margin-bottom: 10px;
+}
+
+.submit-row {
+  padding-top: .809rem;
+}
+
+span.negative {
+  color: red;
+}
+

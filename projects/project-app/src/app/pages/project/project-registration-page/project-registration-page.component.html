@@ -1,0 +1,37 @@
+<header class="page">
+  <h1>Project Registration</h1>
+</header>
+
+<main class="page">
+
+  <form [formGroup]="projectReqistrationForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <label for="projectNameText">Project Name:</label>
+      <input type="text" id="projectNameText" formControlName="projectName" required />
+      <div class="feedback-text">
+        <ng-container *ngIf="projectReqistrationForm.get('projectName')?.hasError('required')">
+          <span class="negative">Project name is required</span>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label for="projectNameText">Project Version:</label>
+      <input type="text" id="projectVersionText" formControlName="projectVersion" required />
+      <div class="feedback-text">
+        <ng-container *ngIf="projectReqistrationForm.get('projectVersion')?.hasError('required')">
+          <span class="negative">Project version is required</span>
+        </ng-container>
+      </div>
+
+    </div>
+
+    <div class="submit-row">
+      <button type="submit" [disabled]="projectReqistrationForm.invalid">Register</button>
+    </div>
+  </form>
+</main>
+
+
+
+
